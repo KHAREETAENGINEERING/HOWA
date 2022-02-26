@@ -1,0 +1,18 @@
+var map = L.map('map').setView([41.8990, 12.4977], 14);
+
+var poiLayers = L.geoJSON(restaurant, {
+  onEachFeature: function(feature, layer) {
+    layer.bindPopup(feature.properties.amenity + '<br><b>' + feature.properties.name + '</b>');
+  }
+});
+
+L.control.search({
+    layer: poiLayers,
+    initial: false,
+    propertyName: 'name' // Specify which property is searched into.
+  })
+  .addTo(map);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);

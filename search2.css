@@ -1,0 +1,3 @@
+var searchLayer = L.geoJson().addTo(map);
+//... adding data in searchLayer ...
+L.map('map', { searchControl: {layer: searchLayer} });
